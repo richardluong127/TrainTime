@@ -134,8 +134,6 @@
         console.log(newTrain.first);
         console.log(newTrain.freq);
 
-        //alert("Train successfully added");
-
         // Clears all of the text-boxes
         $("#train-name-input").val("");
         $("#destination-input").val("");
@@ -158,59 +156,30 @@
         console.log(trainFirst);
         console.log(trainFreq);
 
-        //minutes from first train
-        // var trainMinutesFromFirst = moment().diff(moment(trainFirst, "HH:mm"), "minutes");
-        // console.log(trainMinutesFromFirst);
-        // var newTime = moment().minutes(trainFreq).valueOf() === new Date().setminutes();
+        var minutesElapsed = moment().diff(moment(trainFirst, "HH:mm"), "minutes");
+        console.log(minutesElapsed);
 
-        // var updateNextArrival = function () {
-        //     if (trainMinutesFromFirst === trainFreq) {
-        //         var x = 
-        //     }
+        var minutesAway = minutesElapsed % trainFreq;
+        console.log(minutesAway);
 
-        // }
+        var minutesAwayDisplay = moment(minutesAway).format("mm");
 
-        // var timestamp = moment(trainFirst, "HH:mm");
-        // console.log(timestamp);
-        // var newTime = timestamp.diff(moment(timeFreq, "minutes"), "HH:mm");
-        // console.log(newTime);
+        var currentTime = moment().format("HH:mm");
+        console.log(currentTime);
 
+        var nextArrivalMinutes = minutesElapsed + minutesAway;
+        console.log(nextArrivalMinutes);
 
-        // var firstTrainMinutes = moment(trainFirst).format("minutes");
-        // console.log(firstTrainMinutes);
-        // var nextArrival = moment.duration(firstTrainMinutes).add(trainFreq, "minutes");
-        // console.log(nextArrival);
-        // var nextArrivalPretty = moment(nextArrival).format("HH:mm");
-        // console.log(nextArrivalPretty);
-
-        var trainMinutes = moment().diff(moment(trainFirst, "minutes"), "minutes");
-        console.log(trainMinutes);
-
-        var trainNextPretty = moment(trainNext).format("HH:mm");
-        console.log(trainNextPretty);
-
-        //         // Calculate the minutes elapsed since first train
-
-
-        //         //   console.log(trainMinutesElapsed);
-        //         // next arrival = first train or moment train + frequency
-        var trainFreqMinutes = moment(trainFreq, "minutes");
-        var trainNext = trainMinutes + trainFreqMinutes;
-        console.log(trainNext);
-
-        //         // Calculate the minutes away
-        var trainAway = moment().diff(moment(trainNext, "HH:mm"), "minutes");
-        console.log(trainAway);
+        var nextArrival = moment(nextArrivalMinutes).format("HH:mm");
+        console.log(nextArrival);
 
         // Create the new row
         var newRow = $("<tr>").append(
             $("<td>").text(trainName),
             $("<td>").text(trainDestination),
             $("<td>").text(trainFreq),
-            $("<td>").text(trainNextPretty),
-            //$("<td>").text(trainNext),
-            $("<td>").text(trainAway)
-
+            $("<td>").text(nextArrival),
+            $("<td>").text(minutesAwayDisplay)
         );
 
         // Append the new row to the table
