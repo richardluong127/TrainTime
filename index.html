@@ -159,14 +159,22 @@
         console.log(trainFreq);
 
         //minutes from first train
-        var trainMinutesFromFirst = moment().diff(moment(trainFirst, "HH:mm"), "minutes");
-        console.log(trainMinutesFromFirst);
-        var newTime = moment().minutes(trainFreq).valueOf() === new Date().setminutes();
+        // var trainMinutesFromFirst = moment().diff(moment(trainFirst, "HH:mm"), "minutes");
+        // console.log(trainMinutesFromFirst);
+        // var newTime = moment().minutes(trainFreq).valueOf() === new Date().setminutes();
 
         // var updateNextArrival = function () {
-        //     if (trainMinutesFromFirst > trainFreq);
-        //     trainNextPretty = "";//updated time
+        //     if (trainMinutesFromFirst === trainFreq) {
+        //         var x = 
+        //     }
+
         // }
+
+        // var timestamp = moment(trainFirst, "HH:mm");
+        // console.log(timestamp);
+        // var newTime = timestamp.diff(moment(timeFreq, "minutes"), "HH:mm");
+        // console.log(newTime);
+
 
         // var firstTrainMinutes = moment(trainFirst).format("minutes");
         // console.log(firstTrainMinutes);
@@ -175,24 +183,24 @@
         // var nextArrivalPretty = moment(nextArrival).format("HH:mm");
         // console.log(nextArrivalPretty);
 
-        //         var trainMinutes = moment().diff(moment(trainFirst, "minutes"), "minutes");
+        var trainMinutes = moment().diff(moment(trainFirst, "minutes"), "minutes");
+        console.log(trainMinutes);
 
-
-        //         var trainNextPretty = moment(trainNext).format("HH:mm");
-        //         console.log(trainNextPretty);
+        var trainNextPretty = moment(trainNext).format("HH:mm");
+        console.log(trainNextPretty);
 
         //         // Calculate the minutes elapsed since first train
 
 
         //         //   console.log(trainMinutesElapsed);
         //         // next arrival = first train or moment train + frequency
-        //         var trainFreqMinutes = moment(trainFreq, "minutes");
-        //         var trainNext = trainMinutes + trainFreqMinutes;
-        //         console.log(trainNext);
+        var trainFreqMinutes = moment(trainFreq, "minutes");
+        var trainNext = trainMinutes + trainFreqMinutes;
+        console.log(trainNext);
 
         //         // Calculate the minutes away
-        //         var trainAway = moment().diff(moment(trainNext, "X"), "minutes");
-        //         console.log(trainAway);
+        var trainAway = moment().diff(moment(trainNext, "HH:mm"), "minutes");
+        console.log(trainAway);
 
         // Create the new row
         var newRow = $("<tr>").append(
